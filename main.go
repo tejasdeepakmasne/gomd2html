@@ -89,18 +89,18 @@ func check_heading_6(text string) string {
 	}
 }
 
+func check_headings(text string) string {
+
+}
 func Parser(text string) []string {
 	lines := strings.Split(text, "\n")
 	tags_to_write := make([]string, 0)
 
 	for _, line := range lines {
-		line = check_heading_1(line)
-		line = check_heading_2(line)
-		line = check_heading_3(line)
-		line = check_heading_4(line)
-		line = check_heading_5(line)
-		line = check_heading_6(line)
-		tags_to_write = append(tags_to_write, line)
+		if line[1] == '#' {
+			line = check_headings(line)
+			tags_to_write = append(tags_to_write, line)
+		}
 	}
 
 	return tags_to_write
